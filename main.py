@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import json
 import math
 
+
 st.set_page_config(page_title="Visualización de Grafos", layout='wide', initial_sidebar_state="collapsed")
 
 def draw_graph(G, title):
@@ -30,12 +31,11 @@ def haversine(coord1, coord2):
 
 def crearGrafo():
     G = nx.Graph()
-    with open('/home/joaquin/Documentos/Tarea Arboles de Expansion/paraderos.geojson', encoding='utf-8') as archivo:
+    with open('paraderos.geojson', encoding='utf-8') as archivo:
         geo = json.load(archivo)
         i = 0
         for feature in geo['features']:
-            stop_id = feature['properties']['stop_id']
-    
+            stop_id = feature['properties']['stop_id']    
             coordinates= feature['geometry']['coordinates']
             G.add_node(stop_id, pos=coordinates)
             
